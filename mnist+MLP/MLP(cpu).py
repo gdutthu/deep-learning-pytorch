@@ -14,8 +14,7 @@ class MLP(nn.Module):
             nn.ReLU(inplace=True),
             nn.Linear(200,200),
             nn.ReLU(inplace=True),
-            nn.Linear(200, 10),
-            nn.ReLU(inplace=True)
+            nn.Linear(200, 10)
         )
 
     def forward(self,x):
@@ -26,14 +25,14 @@ class MLP(nn.Module):
 def load_data(batch_size=200):
     print("Loading Data......")
     train_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('../data', train=True, download=True,
+    datasets.MNIST('mnist', train=True, download=True,
                    transform=transforms.Compose([
                        transforms.ToTensor(),
                        transforms.Normalize((0.1307,), (0.3081,))
                    ])),
     batch_size=batch_size, shuffle=True)
     test_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('../data', train=False, transform=transforms.Compose([
+    datasets.MNIST('mnist', train=False, transform=transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))
     ])),
